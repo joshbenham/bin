@@ -1,0 +1,22 @@
+#!/usr/bin/python
+
+import os
+import sys
+import hashlib
+
+if len(sys.argv) != 2:
+	print 'Usage: find-duplicates <directory>'
+	sys.exit(1)
+
+seen = {}
+dir = sys.argv[1]
+
+for subdir, dirs, files in os.walk(dir):
+	for phile in files:
+		phile = os.path.join(subdir, phile)
+		md5 = hashlib.md5(open(phile).read()).hexdigest()
+
+		if md5 in  seen:
+			print "%s <==> %s" % (phile, seen[md5])
+		else:
+			seen[md5] = phile		
