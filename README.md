@@ -20,7 +20,7 @@ Also make sure that your ~/bin directory is in your environment path.
 Scripts
 -------
 
-Find Duplicates of a file in a directory and all its subdirectories
 ```sh
+# find duplicates of a file in a directory and all its subdirectories
 find-duplicates /home/user/images
 ```
