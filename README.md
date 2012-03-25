@@ -20,9 +20,21 @@ Also make sure that your ~/bin directory is in your environment path.
 Scripts
 -------
 
+Find duplicate files
 ```sh
 # find duplicates of a file in a directory and all its subdirectories
 find-duplicates /home/user/images
 # to find out exactly how many duplicates there are
 find-duplicates /home/user/images | wc -l
+```
+
+Simple todo script (requires clint)
+```sh
+# if clint is not installed
+pip install clint
+# todo usage
+todo list
+todo add <message>
+todo finish <number>
+todo delete <number>
 ```
