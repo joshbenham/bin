@@ -21,6 +21,7 @@ Scripts
 -------
 
 Find duplicate files
+
 ```sh
 # find duplicates of a file in a directory and all its subdirectories
 find-duplicates /home/user/images
@@ -29,6 +30,7 @@ find-duplicates /home/user/images | wc -l
 ```
 
 Simple todo script (requires clint)
+
 ```sh
 # if clint is not installed
 pip install clint
