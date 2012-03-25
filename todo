@@ -76,8 +76,6 @@ class Todo:
 			puts(colored.red('$') + 'todo delete <number>')
 
 if __name__ == "__main__":
-	app = Todo()
-
 	if args.grouped['_'].get(0) in allowed_commands:
 		method = args.grouped['_'].get(0)
 		args.pop(0)
