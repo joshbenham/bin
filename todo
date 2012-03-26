@@ -11,76 +11,76 @@ allowed_commands = ['list', 'add', 'finish', 'delete']
 
 class Todo:
 
-	def __enter__(self):
-		self.todo = []
-		resources.init('joshbenham', 'Todo')
+  def __enter__(self):
+    self.todo = []
+    resources.init('joshbenham', 'Todo')
 
-		try:
-			file = resources.user.open('todo.json')
-		except IOError:
-			resources.user.write('todo.json', '')
-			file = resources.user.open('todo.json')
+    try:
+      file = resources.user.open('todo.json')
+    except IOError:
+      resources.user.write('todo.json', '')
+      file = resources.user.open('todo.json')
 
-		if file.read():
-			self.todo = json.loads(resources.user.read('todo.json'))
+    if file.read():
+      self.todo = json.loads(resources.user.read('todo.json'))
 
-		return self
+    return self
 
-	def __exit__(self, type, value, traceback):
-		if not self.todo:
-			self.todo = []
+  def __exit__(self, type, value, traceback):
+    if not self.todo:
+      self.todo = []
 
-		resources.user.write('todo.json', json.dumps(self.todo))
+    resources.user.write('todo.json', json.dumps(self.todo))
 
-	def list(self):
-		if not self.todo:
-			puts(colored.red('You do not have and todo items'))
-		else:
-			for idx, todo in enumerate(self.todo):
-				number = colored.green('#' + str(idx+1))
-				status = colored.green(todo['status']) if todo['status'] == 'open' else colored.red(todo['status'])
-				puts(colored.blue('[') + number + colored.blue(':') + status + colored.blue('] ') + todo['item'])
+  def list(self):
+    if not self.todo:
+      puts(colored.red('You do not have and todo items'))
+    else:
+      for idx, todo in enumerate(self.todo):
+        number = colored.green('#' + str(idx+1))
+        status = colored.green(todo['status']) if todo['status'] == 'open' else colored.red(todo['status'])
+        puts(colored.blue('[') + number + colored.blue(':') + status + colored.blue('] ') + todo['item'])
 
-	def add(self):
-		self.todo.append({
-			'item': ' '.join(args.all),
-			'status': 'open'
-		})
-		puts(colored.green('You have added a new todo item: ' + ' '.join(args.all)))
+  def add(self):
+    self.todo.append({
+      'item': ' '.join(args.all),
+      'status': 'open'
+    })
+    puts(colored.green('You have added a new todo item: ' + ' '.join(args.all)))
 
-	def finish(self):
-		try:
-			count = int(args.all[0])-1
-			if self.todo[count]:
-				self.todo[count]['status'] = 'closed'
-				puts(colored.green('You have finished: ' + self.todo[count]['item']))
-		except IndexError:
-			puts(colored.red('You did not supply an item number or it does not exist'))
+  def finish(self):
+    try:
+      count = int(args.all[0])-1
+      if self.todo[count]:
+        self.todo[count]['status'] = 'closed'
+        puts(colored.green('You have finished: ' + self.todo[count]['item']))
+    except IndexError:
+      puts(colored.red('You did not supply an item number or it does not exist'))
 
-	def delete(self):
-		try:
-			count = int(args.all[0])-1
-			if self.todo[count]:
-				puts(colored.green('You have deleted: ' + self.todo[count]['item']))
-				del self.todo[count]
-		except IndexError:
-			puts(colored.red('You did not supply an item number or it does not exist'))	
+  def delete(self):
+    try:
+      count = int(args.all[0])-1
+      if self.todo[count]:
+        puts(colored.green('You have deleted: ' + self.todo[count]['item']))
+        del self.todo[count]
+    except IndexError:
+      puts(colored.red('You did not supply an item number or it does not exist')) 
 
-	@staticmethod
-	def usage():
-		puts(colored.green('Usage:'))
-		with indent(2):
-			puts(colored.red('$') + 'todo list')
-			puts(colored.red('$') + 'todo add <message>')
-			puts(colored.red('$') + 'todo finish <number>')
-			puts(colored.red('$') + 'todo delete <number>')
+  @staticmethod
+  def usage():
+    puts(colored.green('Usage:'))
+    with indent(2):
+      puts(colored.red('$') + 'todo list')
+      puts(colored.red('$') + 'todo add <message>')
+      puts(colored.red('$') + 'todo finish <number>')
+      puts(colored.red('$') + 'todo delete <number>')
 
 if __name__ == "__main__":
-	if args.grouped['_'].get(0) in allowed_commands:
-		method = args.grouped['_'].get(0)
-		args.pop(0)
+  if args.grouped['_'].get(0) in allowed_commands:
+    method = args.grouped['_'].get(0)
+    args.pop(0)
 
-		with Todo() as app:
-			getattr(app, method)()
-	else:
-		Todo.usage()
+    with Todo() as app:
+      getattr(app, method)()
+  else:
+    Todo.usage()
