@@ -7,9 +7,9 @@ import json
 from clint import args, resources
 from clint.textui import puts, indent, colored
 
-allowed_commands = ['list', 'add', 'finish', 'delete']
-
 class Todo:
+
+  allowed_commands = ['list', 'add', 'finish', 'delete']
 
   def __enter__(self):
     self.todo = []
@@ -52,8 +52,8 @@ class Todo:
     try:
       count = int(args.all[0])-1
       if self.todo[count]:
-        self.todo[count]['status'] = 'closed'
         puts(colored.green('You have finished: ' + self.todo[count]['item']))
+        self.todo[count]['status'] = 'closed'
     except IndexError:
       puts(colored.red('You did not supply an item number or it does not exist'))
 
@@ -76,7 +76,7 @@ class Todo:
       puts(colored.red('$') + 'todo delete <number>')
 
 if __name__ == "__main__":
-  if args.grouped['_'].get(0) in allowed_commands:
+  if args.grouped['_'].get(0) in Todo.allowed_commands:
     method = args.grouped['_'].get(0)
     args.pop(0)
 
