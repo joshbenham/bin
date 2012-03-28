@@ -37,9 +37,8 @@ class Todo:
       puts(colored.red('You do not have and todo items'))
     else:
       for idx, todo in enumerate(self.todo):
-        number = colored.green('#' + str(idx+1))
-        status = colored.green(todo['status']) if todo['status'] == 'open' else colored.red(todo['status'])
-        puts(colored.blue('[') + number + colored.blue(':') + status + colored.blue('] ') + todo['item'])
+        number = colored.green('#' + str(idx+1)) if todo['status'] == 'open' else colored.red('#' + str(idx+1))
+        puts(number + ' - ' + todo['item'])
 
   def add(self):
     self.todo.append({
