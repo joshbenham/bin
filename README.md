@@ -1,27 +1,21 @@
-bin
-===
+# bin
 
 [Josh Benham](http://joshbenham.net)'s personal bin directory
 
 
-Overview
---------
+## Overview
 
 Simple scripts that I tend to use on a day to day basis (or atleast more than once).
 
 
-Instructions
-------------
+## Instructions
+
 ```sh
 # grab the repo
-$ git clone git://github.com/joshbenham/bin ~/bin
+$ git clone --depth 1 https://github.com/joshbenham/bin ~/bin
 ```
 
-Also make sure that your ~/bin directory is in your environment path.
-
-
-Scripts
--------
+## Scripts
 
 Find duplicate files
 
