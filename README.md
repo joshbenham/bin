@@ -1,14 +1,6 @@
-# bin
+# BIN
 
-[Josh Benham](http://joshbenham.net)'s personal bin directory
-
-
-## Overview
-
-Simple scripts that I tend to use on a day to day basis (or atleast more than once).
-
-
-## Instructions
+## Installation
 
 ```sh
 # grab the repo
