@@ -13,8 +13,8 @@ Find duplicate files
 
 ```sh
 # find duplicates of a file in a directory and all its subdirectories
-$ find-duplicates /home/user/images
+$ dupes /home/user/images
 
 # to find out exactly how many duplicates there are
-$ find-duplicates /home/user/images | wc -l
+$ dupes /home/user/images | wc -l
 ```

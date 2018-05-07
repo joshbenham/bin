@@ -5,7 +5,7 @@ import sys
 import hashlib
 
 if len(sys.argv) != 2:
-  print 'Usage: find-duplicates <directory>'
+  print 'Usage: dupes <directory>'
   sys.exit(1)
 
 seen = {}
@@ -17,4 +17,4 @@ for subdir, dirs, files in os.walk(sys.argv[1]):
     if md5 in seen:
       print "%s <==> %s" % (file, seen[md5])
     else:
-      seen[md5] = file   
+      seen[md5] = file
