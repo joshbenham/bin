@@ -4,7 +4,7 @@
 
 ```sh
 # grab the repo
-$ git clone --depth 1 https://github.com/joshbenham/bin ~/bin
+$ git clone --depth 1 git@github.com:joshbenham/bin.git ~/bin
 ```
 
 ## Scripts
