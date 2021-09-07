@@ -3,4 +3,4 @@
 git clone --depth=1 git@github.com:spatie/package-skeleton-laravel.git $@
 cd $@
 
-./configure-skeleton.sh
+php ./configure.php
