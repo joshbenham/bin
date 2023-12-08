@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 git clone --depth=1 git@github.com:spatie/package-skeleton-laravel.git $@
 cd $@

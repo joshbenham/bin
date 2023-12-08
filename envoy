@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ -f /usr/bin/php7.4 ]; then
     /usr/bin/php7.4 $HOME/.config/composer/vendor/bin/envoy $@
