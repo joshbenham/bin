@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -eu
+
+echo "Cleaning: ~/.cache/vmware/drag_and_drop/"
+find ~/.cache/vmware/drag_and_drop/ -mindepth 1 -maxdepth 1 ! -name . -prune -type d -exec rm -R {} +
