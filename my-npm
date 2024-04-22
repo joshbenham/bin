@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+OSTYPE=`uname`
+
+if [[ -d "$PWD/.ddev" ]]; then
+  echo "exec npm $@"
+  ddev exec npm $@
+elif [[ $OSTYPE == "Darwin" ]]; then
+  echo "herd npm $@"
+  herd npm $@
+else
+  echo "/usr/bin/npm $@"
+  /usr/bin/npm $@
+fi

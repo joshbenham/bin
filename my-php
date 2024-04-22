@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+OSTYPE=`uname`
+
 if [[ -d "$PWD/.ddev" ]]; then
   echo "exec php $@"
   ddev exec php $@
-elif [[ $PWD == */Herd/* ]]; then
+elif [[ $OSTYPE == "Darwin" ]]; then
   echo "herd php $@"
   herd php $@
 else

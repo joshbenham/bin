@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+OSTYPE=`uname`
+
+if [[ -d "$PWD/.ddev" ]]; then
+  echo "exec composer $@"
+  ddev exec composer $@
+elif [[ $OSTYPE == "Darwin" ]]; then
+  echo "herd composer $@"
+  herd composer $@
+else
+  echo "/usr/bin/composer $@"
+  /usr/bin/composer $@
+fi
